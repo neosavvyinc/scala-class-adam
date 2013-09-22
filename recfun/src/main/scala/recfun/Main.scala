@@ -56,5 +56,24 @@ object Main {
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+  def countChange(money: Int, coins: List[Int]): Int = {
+    
+    def findCount( aMoney: Int, aCoins: List[Int] ): Int = {
+      
+      if( aMoney == 0 ) {
+        1
+      }
+      else if( aMoney < 0 || aCoins.isEmpty ) {
+        0
+      }
+      else {
+        findCount( aMoney - aCoins.head, aCoins) +
+        findCount( aMoney, aCoins.tail) 
+      }
+      
+    }
+    
+    return findCount(money, coins)
+    
+  }
 }
