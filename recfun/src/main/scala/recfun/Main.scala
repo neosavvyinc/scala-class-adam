@@ -15,7 +15,7 @@ object Main {
    * Exercise 1
    */
   def pascal(c: Int, r: Int): Int = {
-    if( r <= 0 || c < 0) 
+    if( r <= 0 || c < 0 ) 
     	return 0
 	else if( c==0 || c==r)	
     	return 1
