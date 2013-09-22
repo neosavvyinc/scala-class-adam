@@ -1,5 +1,6 @@
 package recfun
 import common._
+import java.util.ArrayList
 
 object Main {
   def main(args: Array[String]) {
@@ -26,7 +27,31 @@ object Main {
   /**
    * Exercise 2
    */
-  def balance(chars: List[Char]): Boolean = ???
+  def balance(chars: List[Char]): Boolean = {
+    
+    def isBalanced( chars: List[Char], stack: String ): Boolean = {
+    
+      if( chars.isEmpty ) {
+        return stack.isEmpty;
+      }
+      else if ( chars(0).equals('(') ) {
+        println("Handling an open paren: " + chars.head, stack);
+        isBalanced(chars.tail, chars.head + stack)
+      }
+      else if ( chars(0).equals(')')) {
+        println("Handling an close paren: " + chars.head, stack);
+        !stack.isEmpty && isBalanced(chars.tail, stack.tail)        
+      }
+      else {
+        println("Handling non paren: " + chars, stack);
+        isBalanced(chars.tail, stack);
+      }
+      
+    }
+    
+    return isBalanced( chars, "");
+    
+  }
 
   /**
    * Exercise 3
